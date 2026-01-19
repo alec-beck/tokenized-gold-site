@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokenized Gold | Yield-Bearing Gold for Institutional Allocators</title>
+  <style>
+    :root {
+      --gold: #b8860b;
+      --gold-light: #d4a84b;
+      --gold-subtle: #f5f0e6;
+      --navy: #1a2a3a;
+      --navy-light: #2d4a6f;
+      --text: #2c3e50;
+      --text-light: #5a6a7a;
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --border: #e0e4e8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    h1, h2, h3, h4, nav, .cta-btn {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 0 24px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--navy);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--navy-light);
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 100px 24px 120px;
+      background: linear-gradient(180deg, var(--gold-subtle) 0%, var(--bg) 100%);
+    }
+
+    .hero-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 24px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .hero-subheadline {
+      font-size: 22px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+
+    .hero-text {
+      font-size: 19px;
+      color: var(--text);
+      margin-bottom: 48px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-primary {
+      background: var(--gold);
+      color: white;
+    }
+
+    .cta-primary:hover {
+      background: var(--gold-light);
+    }
+
+    .cta-secondary {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+
+    .cta-secondary:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 24px;
+    }
+
+    section:nth-child(even) {
+      background: var(--bg-alt);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: var(--navy);
+      margin-bottom: 32px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: var(--navy);
+      margin-bottom: 16px;
+      margin-top: 32px;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: var(--navy);
+      font-weight: 600;
+    }
+
+    /* Feature List */
+    .feature-list {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .feature-list li {
+      padding: 12px 0 12px 32px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 18px;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comparison-table th {
+      background: var(--navy);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .comparison-table th:first-child {
+      border-radius: 4px 0 0 0;
+    }
+
+    .comparison-table th:last-child {
+      border-radius: 0 4px 0 0;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: var(--bg-alt);
+    }
+
+    .comparison-table td:last-child {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* Yield List */
+    .yield-list {
+      list-style: none;
+      margin: 24px 0;
+      background: var(--gold-subtle);
+      border-radius: 8px;
+      padding: 24px 32px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .yield-list li {
+      padding: 8px 0;
+      display: flex;
+      gap: 12px;
+    }
+
+    .yield-list li strong {
+      min-width: 140px;
+      color: var(--navy);
+    }
+
+    /* FAQ Accordion */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 40px 24px 0;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      cursor: pointer;
+      position: relative;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: var(--gold);
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--gold);
+      transition: transform 0.2s;
+    }
+
+    .faq-question.active::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .faq-answer-inner {
+      padding: 0 0 24px 0;
+      color: var(--text-light);
+    }
+
+    /* Calendly Section */
+    .calendly-section {
+      background: var(--gold-subtle);
+      color: var(--text);
+      text-align: center;
+      border-top: 4px solid var(--gold);
+    }
+
+    .calendly-section h2 {
+      color: var(--navy);
+    }
+
+    .calendly-section p {
+      color: var(--text);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 18px;
+    }
+
+    #calendly-embed {
+      margin-top: 40px;
+      min-height: 650px;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-family: sans-serif;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+    }
+
+    .cta-section .container {
+      max-width: 640px;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .cta-card {
+      background: white;
+      padding: 32px 24px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+
+    .cta-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .cta-card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .cta-card p {
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .cta-card .cta-btn {
+      width: 100%;
+      padding: 14px 24px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 48px 24px;
+      text-align: center;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+
+    footer p {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 8px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 24px 80px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      section {
+        padding: 60px 24px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      .comparison-table {
+        font-size: 14px;
+      }
+
+      .comparison-table th,
+      .comparison-table td {
+        padding: 12px;
+      }
+
+      .yield-list li {
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .yield-list li strong {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-logo">Tokenized<span>Gold</span></a>
+      <ul class="nav-links">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#tokenized-gold">Tokenized Gold</a></li>
+        <li><a href="#yield">Yield</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <a href="#book-call" class="nav-cta">Book a Call</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="overview">
+    <div class="hero-container">
+      <h1>Gold Has Protected Wealth for 5,000 Years. Now It Can Grow It.</h1>
+      <p class="hero-subheadline">A modern approach to gold ownership—with the yield institutional allocators have been waiting for.</p>
+      <p class="hero-text">For centuries, gold has served as humanity's most trusted store of value. But traditional gold ownership comes with trade-offs: storage costs, settlement friction, and zero yield. Tokenization changes this equation. For the first time, sophisticated investors can hold fully-backed physical gold with unprecedented transparency and liquidity—while generating as high as 8–9% annual yield on their holdings.</p>
+      <div class="hero-ctas">
+        <a href="#book-call" class="cta-btn cta-primary">Book a Private Briefing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Investors Own Gold -->
+  <section id="why-gold">
+    <div class="container">
+      <h2>Why Investors Own Gold</h2>
+      <p>Gold remains a cornerstone of sophisticated portfolios for well-established reasons. It has historically preserved purchasing power during periods of currency debasement and inflation. Its low correlation with equities and bonds provides genuine diversification when it matters most. And it serves as portfolio insurance against tail risks—geopolitical instability, banking crises, and systemic shocks.</p>
+      <p>Today, interest in gold is rising again. Central banks have become net buyers at multi-decade highs. Sovereign debt levels continue to climb. And allocators increasingly seek hard assets as a hedge against an uncertain monetary environment.</p>
+      <p><strong>The case for gold is clear. The question is how to own it most effectively.</strong></p>
+    </div>
+  </section>
+
+  <!-- Limitations of Traditional Gold -->
+  <section id="limitations">
+    <div class="container">
+      <h2>The Limitations of Traditional Gold</h2>
+      <p>Gold's value proposition is compelling. But the infrastructure through which it has historically been accessed creates meaningful friction.</p>
+      <ul class="feature-list">
+        <li><strong>No yield.</strong> Unlike bonds, equities, or real estate, traditional gold generates no income. It sits inert, providing protection but no return on capital—a significant opportunity cost for allocators managing to benchmarks.</li>
+        <li><strong>Custody drag.</strong> Storage, insurance, and administration typically cost 0.25–0.50% annually. These costs compound over time and never stop.</li>
+        <li><strong>Settlement friction.</strong> Traditional gold markets operate on T+2 or longer settlement. Large transactions require coordination between custodians and counterparties, limiting portfolio flexibility.</li>
+      </ul>
+      <p>These limitations don't diminish gold's value. They highlight the opportunity for infrastructure improvement.</p>
+    </div>
+  </section>
+
+  <!-- What Is Tokenized Gold -->
+  <section id="tokenized-gold">
+    <div class="container">
+      <h2>What Is Tokenized Gold?</h2>
+      <p>Tokenized gold is physical gold represented as digital tokens on secure blockchain infrastructure. Each token corresponds to a specific quantity of gold—typically one troy ounce—held in audited custody. The token serves as a digital certificate of ownership that can be transferred or utilized without moving the underlying metal.</p>
+      
+      <h3>How It Works</h3>
+      <p>Physical gold is acquired from LBMA-accredited refiners and deposited with institutional-grade custodians in secure, insured vaults. Digital tokens are issued to represent these holdings, with total token supply matching custodied gold at all times. Independent auditors regularly verify holdings, with reports published for transparency. Token holders retain redemption rights for physical delivery.</p>
+      
+      <h3>Why Institutions Are Adopting It</h3>
+      <p>Regulatory clarity has emerged in major jurisdictions. Established custodians now offer tokenized gold solutions. And the operational benefits—reduced costs, improved liquidity, real-time verification—align with how modern portfolios are managed.</p>
+    </div>
+  </section>
+
+  <!-- Why Tokenized Gold Is Better -->
+  <section id="comparison">
+    <div class="container">
+      <h2>Why Tokenized Gold Is a Better Way to Own Gold</h2>
+      <p>Tokenized gold doesn't change what gold is. It changes how gold can be owned, managed, and utilized.</p>
+      <ul class="feature-list">
+        <li><strong>Liquidity.</strong> Trade 24/7 with near-instant settlement, rather than waiting days to liquidate positions.</li>
+        <li><strong>Transparency.</strong> Verify holdings on-chain in real time, rather than relying solely on periodic third-party audits.</li>
+        <li><strong>Efficiency.</strong> Reduce custody and administrative costs while eliminating logistical complexity.</li>
+        <li><strong>Flexibility.</strong> Integrate gold seamlessly with modern portfolio infrastructure and reporting systems.</li>
+      </ul>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Traditional Gold</th>
+            <th>Tokenized Gold</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Liquidity</td>
+            <td>Days to settle</td>
+            <td>24/7, instant</td>
+          </tr>
+          <tr>
+            <td>Verification</td>
+            <td>Manual audits</td>
+            <td>Real-time, on-chain</td>
+          </tr>
+          <tr>
+            <td>Settlement</td>
+            <td>T+2 or longer</td>
+            <td>Minutes</td>
+          </tr>
+          <tr>
+            <td>Yield Potential</td>
+            <td>None</td>
+            <td>As high as 8–9% APY</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p><strong>The upgrade is operational, not speculative. Same gold. Better infrastructure.</strong></p>
+    </div>
+  </section>
+
+  <!-- Earning Yield on Gold -->
+  <section id="yield">
+    <div class="container">
+      <h2>The Evolution: Earning Yield on Gold</h2>
+      <p>For centuries, gold's inertness was both its strength and its limitation. You couldn't earn a return on gold without lending it out—introducing counterparty risks that defeated the purpose of holding it in the first place.</p>
+      <p>Tokenization changes this calculus.</p>
+      <p>Because tokenized gold can interact with modern financial infrastructure, it can now participate in yield-generating strategies while the underlying physical gold remains in secure custody. No gold lending to bullion banks. No conversion to synthetic instruments. No compromising the core value proposition.</p>
+      <p><strong>We offer as high as 8–9% annualized yield on tokenized gold holdings.</strong></p>
+      
+      <ul class="yield-list">
+        <li><strong>Additive:</strong> You still own gold. Yield is generated on top of your position, not instead of it.</li>
+        <li><strong>Conservative:</strong> Strategies prioritize capital preservation over maximum returns.</li>
+        <li><strong>Risk-managed:</strong> Multiple layers of diversification and monitoring protect principal.</li>
+        <li><strong>Long-term focused:</strong> This compounds the benefits of a strategic gold allocation over time.</li>
+      </ul>
+
+      <p>For investors who already believe in gold, yield transforms a defensive asset into a productive one.</p>
+    </div>
+  </section>
+
+  <!-- How the Yield Works -->
+  <section id="how-yield-works">
+    <div class="container">
+      <h2>How the Yield Works</h2>
+      <p>Yield is generated through systematic strategies that utilize tokenized gold's unique properties within institutional-grade infrastructure. These include liquidity provision, basis capture, and secured lending activities—all with capital preservation as the primary objective.</p>
+      <p>This product is designed for sophisticated, long-term allocators who understand both the opportunity and the risks involved. It is appropriate for investors with 12+ month time horizons who can conduct independent due diligence.</p>
+      <p>It is not designed for short-term traders, those requiring guaranteed liquidity, or investors uncomfortable with emerging financial infrastructure.</p>
+      <p>We encourage prospective allocators to ask questions, review documentation, and consult qualified advisors before making any decisions.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <button class="faq-question">How is the physical gold secured?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Gold is held in LBMA-accredited vaults operated by tier-1 custodians. Holdings are segregated (not pooled), allocated to our account, and insured. Independent auditors verify holdings on a regular basis, and proof-of-reserve reports are published for transparency.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Can I redeem my tokens for physical gold?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. Token holders may redeem for physical delivery subject to minimum quantities (typically 400 oz bars) and standard delivery logistics. Smaller redemptions may be settled in gold-equivalent value.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Is the yield guaranteed?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. Yield rates are variable based on market conditions and strategy performance. Historical performance is not a guarantee of future results. We provide transparent reporting on actual yields achieved and prioritize capital preservation over yield maximization.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What happens if a smart contract is exploited?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We maintain multiple layers of protection including third-party audits, bug bounty programs, insurance coverage, and diversification across protocols. In the event of a security incident, our incident response plan prioritizes investor protection and transparent communication.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How is this different from gold ETFs?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">ETFs provide price exposure to gold but typically offer no yield. Our product provides exposure to physical gold plus yield generation, with the added benefits of tokenized ownership: 24/7 liquidity, real-time verification, and global transferability.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What is the minimum investment?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Please contact us for current minimums. We work with qualified investors and can accommodate various entry points depending on circumstances. Schedule a private briefing to discuss your specific situation.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How do I verify the gold backing?</button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We publish regular audit reports from independent third parties. Additionally, on-chain proof of reserves allows real-time verification of token supply against custodied gold. These reports are available upon request and to all token holders.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Calendly Embed Section -->
+  <section class="calendly-section" id="book-call">
+    <div class="container">
+      <h2>Schedule a Private Briefing</h2>
+      <p>A confidential conversation with our institutional team. We'll answer your questions, discuss your specific situation, and provide detailed documentation—with no obligation.</p>
+      
+      <!-- 
+        ============================================
+        CALENDLY EMBED
+        ============================================
+      -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/alec-psalion" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <h2>Continue Your Research</h2>
+      <p>We understand that sophisticated allocators conduct thorough due diligence. We welcome your questions and are prepared to provide the documentation, references, and access you need to evaluate whether this solution fits your needs.</p>
+      <p><em>There's no pressure and no obligation—only a genuine interest in helping you understand whether this solution fits your allocation strategy.</em></p>
+      
+      <div class="cta-grid">
+        <div class="cta-card">
+          <h3>Book a Private Briefing</h3>
+          <p>Schedule a confidential conversation with our institutional team.</p>
+          <a href="#book-call" class="cta-btn cta-primary">Book a Call</a>
+        </div>
+        <div class="cta-card">
+          <h3>Email Us Directly</h3>
+          <p>Prefer email? We typically respond within one business day.</p>
+          <a href="mailto:alec@psalion.com" class="cta-btn cta-secondary">Email Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>For qualified, sophisticated investors only. This is not an offer to sell or solicitation to buy securities.</p>
+    <p>Past performance is not indicative of future results. Yield is variable and not guaranteed.</p>
+    <p>&copy; 2026 TokenizedGold. All rights reserved.</p>
+  </footer>
+
+  <!-- FAQ Accordion Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      
+      faqQuestions.forEach(function(question) {
+        question.addEventListener('click', function() {
+          const answer = this.nextElementSibling;
+          const isActive = this.classList.contains('active');
+          
+          // Close all other answers
+          faqQuestions.forEach(function(q) {
+            q.classList.remove('active');
+            q.nextElementSibling.style.maxHeight = null;
+          });
+          
+          // Toggle current answer
+          if (!isActive) {
+            this.classList.add('
