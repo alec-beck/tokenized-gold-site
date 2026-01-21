@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psalion | Tokenized Gold for Institutional Allocators</title>
+  <title>Tokenized Gold | Yield-Bearing Gold for Institutional Allocators</title>
   <style>
     :root {
       --gold: #b8860b;
@@ -252,6 +252,70 @@
       border-radius: 50%;
     }
 
+    /* Trust Callout Box */
+    .trust-callout {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+
+    .trust-callout h4 {
+      font-size: 16px;
+      color: var(--navy);
+      margin-bottom: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .trust-callout ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .trust-callout li {
+      padding: 6px 0 6px 20px;
+      position: relative;
+      font-size: 16px;
+      color: var(--text);
+    }
+
+    .trust-callout li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    /* Yield Highlight */
+    .yield-highlight {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+
+    .yield-highlight .yield-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    .yield-highlight .yield-label {
+      font-size: 16px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0;
+    }
+
     /* Comparison Table */
     .comparison-table {
       width: 100%;
@@ -355,6 +419,10 @@
       transform: translateY(-50%) rotate(45deg);
     }
 
+    .faq-question[aria-expanded="true"]::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -386,19 +454,6 @@
       font-size: 18px;
     }
 
-    #calendly-embed {
-      margin-top: 40px;
-      min-height: 650px;
-      background: white;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-family: sans-serif;
-    }
-
     /* CTA Section */
     .cta-section {
       text-align: center;
@@ -410,7 +465,7 @@
 
     .cta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 24px;
       margin-top: 48px;
     }
@@ -497,6 +552,14 @@
       .yield-list li strong {
         min-width: auto;
       }
+
+      .yield-highlight .yield-number {
+        font-size: 32px;
+      }
+
+      .trust-callout {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -505,30 +568,31 @@
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
-      <a href="#" class="nav-logo">Psalion<span>Gold</span></a>
+      <a href="#" class="nav-logo">Tokenized<span>Gold</span></a>
       <ul class="nav-links">
         <li><a href="#overview">Overview</a></li>
         <li><a href="#tokenized-gold">Tokenized Gold</a></li>
         <li><a href="#yield">Yield</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#book-call" class="nav-cta">Request Info</a>
+      <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a>
     </div>
   </nav>
-
-  <!-- Investor Qualification Notice -->
-  <div style="background: #f8f4e9; border-bottom: 1px solid #e0d9c8; padding: 12px 24px; text-align: center; font-family: sans-serif; font-size: 14px; color: #5a5a5a;">
-    <em>This content is intended for institutional and accredited investors only. It is provided for informational and educational purposes and does not constitute investment advice or an offer of securities.</em>
-  </div>
 
   <!-- Hero Section -->
   <section class="hero" id="overview">
     <div class="hero-container">
-      <h1>Gold Has Protected Wealth for 5,000 Years. Now It Can Work Harder.</h1>
-      <p class="hero-subheadline">A modern approach to gold ownership—with yield-generating potential for qualified institutional allocators.</p>
-      <p class="hero-text">For centuries, gold has served as humanity's most trusted store of value. But traditional gold ownership comes with trade-offs: storage costs, settlement friction, and no native yield. Tokenization is changing how institutions access and utilize gold. Qualified investors can now hold fully-backed physical gold with enhanced transparency and liquidity—while participating in strategies designed to generate yield on their holdings. <em>Yield is variable and not guaranteed.</em></p>
+      <h1>Gold Has Protected Wealth for 5,000 Years. Now It Can Grow It.</h1>
+      <p class="hero-subheadline">A modern approach to gold ownership, with the yield institutional allocators have been waiting for.</p>
+      
+      <div class="yield-highlight">
+        <div class="yield-number">7-10% Historical APY</div>
+        <p class="yield-label">Earn yield in PAXG: put in PAXG, receive additional PAXG</p>
+      </div>
+
+      <p class="hero-text">For centuries, gold has served as humanity's most trusted store of value. But traditional gold ownership comes with trade-offs: storage costs, settlement friction, and zero yield. We utilize PAXG, a fully-backed, regulated tokenized gold issued by Paxos Trust Company, to change this equation. For the first time, sophisticated investors can hold fully-backed physical gold with unprecedented transparency and liquidity while generating yield paid in additional PAXG.</p>
       <div class="hero-ctas">
-        <a href="#book-call" class="cta-btn cta-primary">Request Information</a>
+        <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Book a Private Briefing</a>
       </div>
     </div>
   </section>
@@ -537,7 +601,7 @@
   <section id="why-gold">
     <div class="container">
       <h2>Why Investors Own Gold</h2>
-      <p>Gold remains a cornerstone of sophisticated portfolios for well-established reasons. It has historically preserved purchasing power during periods of currency debasement and inflation. Its low correlation with equities and bonds provides genuine diversification when it matters most. And it serves as portfolio insurance against tail risks—geopolitical instability, banking crises, and systemic shocks.</p>
+      <p>Gold remains a cornerstone of sophisticated portfolios for well-established reasons. It has historically preserved purchasing power during periods of currency debasement and inflation. Its low correlation with equities and bonds provides genuine diversification when it matters most. And it serves as portfolio insurance against tail risks: geopolitical instability, banking crises, and systemic shocks.</p>
       <p>Today, interest in gold is rising again. Central banks have become net buyers at multi-decade highs. Sovereign debt levels continue to climb. And allocators increasingly seek hard assets as a hedge against an uncertain monetary environment.</p>
       <p><strong>The case for gold is clear. The question is how to own it most effectively.</strong></p>
     </div>
@@ -549,8 +613,8 @@
       <h2>The Limitations of Traditional Gold</h2>
       <p>Gold's value proposition is compelling. But the infrastructure through which it has historically been accessed creates meaningful friction.</p>
       <ul class="feature-list">
-        <li><strong>No yield.</strong> Unlike bonds, equities, or real estate, traditional gold generates no income. It sits inert, providing protection but no return on capital—a significant opportunity cost for allocators managing to benchmarks.</li>
-        <li><strong>Custody drag.</strong> Storage, insurance, and administration typically cost 0.25–0.50% annually. These costs compound over time and never stop.</li>
+        <li><strong>No yield.</strong> Unlike bonds, equities, or real estate, traditional gold generates no income. It sits inert, providing protection but no return on capital, a significant opportunity cost for allocators managing to benchmarks.</li>
+        <li><strong>Custody drag.</strong> Storage, insurance, and administration typically cost 0.25-0.50% annually. These costs compound over time and never stop.</li>
         <li><strong>Settlement friction.</strong> Traditional gold markets operate on T+2 or longer settlement. Large transactions require coordination between custodians and counterparties, limiting portfolio flexibility.</li>
       </ul>
       <p>These limitations don't diminish gold's value. They highlight the opportunity for infrastructure improvement.</p>
@@ -561,25 +625,40 @@
   <section id="tokenized-gold">
     <div class="container">
       <h2>What Is Tokenized Gold?</h2>
-      <p>Tokenized gold is physical gold represented as digital tokens on secure blockchain infrastructure. Each token corresponds to a specific quantity of gold—typically one troy ounce—held in audited custody. The token serves as a digital certificate of ownership that can be transferred or utilized without moving the underlying metal.</p>
+      <p>Tokenized gold is physical gold represented as digital tokens on secure blockchain infrastructure. We utilize <strong>PAXG (Pax Gold)</strong>, issued by Paxos Trust Company, LLC, a New York limited purpose trust company regulated by the New York State Department of Financial Services. Each PAXG token corresponds to exactly one fine troy ounce of allocated London Good Delivery gold held in LBMA-accredited vaults in London.</p>
       
+      <div class="trust-callout">
+        <h4>PAXG Trust &amp; Backing</h4>
+        <ul>
+          <li>Issued by Paxos Trust Company, LLC, regulated by NYDFS</li>
+          <li>1 PAXG = 1 fine troy ounce of allocated London Good Delivery gold</li>
+          <li>Gold stored in LBMA-accredited vaults in London</li>
+          <li>Redeemable 1:1 for loco London gold or physical delivery</li>
+          <li>Zero custody fees for PAXG token holders</li>
+          <li>KPMG provides independent examination of PAXG redemption assets</li>
+        </ul>
+      </div>
+
       <h3>How It Works</h3>
-      <p>Physical gold is acquired from LBMA-accredited refiners and deposited with institutional-grade custodians in secure, insured vaults. Digital tokens are issued to represent these holdings, with total token supply matching custodied gold at all times. Independent auditors regularly verify holdings, with reports published for transparency. Token holders retain redemption rights for physical delivery.</p>
+      <p>PAXG can be purchased with USD or unallocated gold, which is then converted into allocated gold bars through an LBMA clearer. Tokens are minted in relation to those specific bars. At any time, PAXG holders can see the serial number, value, and physical characteristics of their vaulted gold. Independent auditors verify that total PAXG tokens outstanding match the underlying gold assets.</p>
+
+      <h3>Independent Verification</h3>
+      <p>KPMG LLP conducts independent accountants' examinations of Paxos's PAXG Redemption Assets Report. Their examination verifies that total redemption assets (London Good Delivery gold held in LBMA-approved vaults) are equal to or greater than the total PAXG redeemable tokens outstanding. This provides institutional-grade assurance of full backing.</p>
       
       <h3>Why Institutions Are Adopting It</h3>
-      <p>Regulatory clarity has emerged in major jurisdictions. Established custodians now offer tokenized gold solutions. And the operational benefits—reduced costs, improved liquidity, real-time verification—align with how modern portfolios are managed.</p>
+      <p>Regulatory clarity has emerged in major jurisdictions. Paxos Trust Company is regulated by the New York State Department of Financial Services and operates under established trust company standards. The operational benefits (reduced costs, improved liquidity, real-time verification) align with how modern portfolios are managed.</p>
     </div>
   </section>
 
   <!-- Why Tokenized Gold Is Better -->
   <section id="comparison">
     <div class="container">
-      <h2>Why Tokenized Gold May Be a More Efficient Way to Own Gold</h2>
-      <p>Tokenized gold doesn't change what gold is. It changes how gold can be owned, managed, and utilized.</p>
+      <h2>Why PAXG Is a Better Way to Own Gold</h2>
+      <p>PAXG doesn't change what gold is. It changes how gold can be owned, managed, and utilized, with full regulatory oversight and independent verification.</p>
       <ul class="feature-list">
         <li><strong>Liquidity.</strong> Trade 24/7 with near-instant settlement, rather than waiting days to liquidate positions.</li>
-        <li><strong>Transparency.</strong> Verify holdings on-chain in real time, rather than relying solely on periodic third-party audits.</li>
-        <li><strong>Efficiency.</strong> Reduce custody and administrative costs while eliminating logistical complexity.</li>
+        <li><strong>Transparency.</strong> Verify holdings on-chain in real time. PAXG holders can view the serial numbers and characteristics of their allocated gold bars at any time.</li>
+        <li><strong>Efficiency.</strong> Zero custody fees for PAXG. Eliminate storage and administrative costs while maintaining full ownership of allocated gold.</li>
         <li><strong>Flexibility.</strong> Integrate gold seamlessly with modern portfolio infrastructure and reporting systems.</li>
       </ul>
 
@@ -588,19 +667,19 @@
           <tr>
             <th>Attribute</th>
             <th>Traditional Gold</th>
-            <th>Tokenized Gold</th>
+            <th>PAXG</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Liquidity</td>
             <td>Days to settle</td>
-            <td>24/7, instant</td>
+            <td>24/7, near-instant</td>
           </tr>
           <tr>
             <td>Verification</td>
             <td>Manual audits</td>
-            <td>Real-time, on-chain</td>
+            <td>Real-time, on-chain + KPMG examination</td>
           </tr>
           <tr>
             <td>Settlement</td>
@@ -608,55 +687,51 @@
             <td>Minutes</td>
           </tr>
           <tr>
+            <td>Custody Fees</td>
+            <td>0.25-0.50% annually</td>
+            <td>Zero</td>
+          </tr>
+          <tr>
             <td>Yield Potential</td>
             <td>None</td>
-            <td>Strategy-dependent*</td>
+            <td>7-10% historical APY</td>
           </tr>
         </tbody>
       </table>
-      <p style="font-size: 14px; color: var(--text-light); margin-top: -16px;"><em>*Yield is variable, not guaranteed, and subject to risk. Past performance is not indicative of future results.</em></p>
 
-      <p><strong>The potential upgrade is operational, not speculative. Same gold. Enhanced infrastructure.</strong></p>
+      <p><strong>The upgrade is operational, not speculative. Same gold. Better infrastructure. Independent verification.</strong></p>
     </div>
   </section>
 
   <!-- Earning Yield on Gold -->
   <section id="yield">
     <div class="container">
-      <h2>Exploring Yield Potential on Gold Holdings</h2>
-      <p>Historically, gold's lack of yield was accepted as the cost of its unique properties. Earning a return on gold typically required lending arrangements that introduced counterparty risks—often defeating the purpose of holding gold in the first place.</p>
-      <p>Tokenization introduces new possibilities.</p>
-      <p>Because tokenized gold can interact with digital financial infrastructure, it may participate in yield-generating strategies while the underlying physical gold remains in custody. These strategies are designed with risk management as a core consideration.</p>
-      <p><strong>Our approach targets yield generation on tokenized gold holdings. Actual results vary based on market conditions and are not guaranteed.</strong></p>
+      <h2>The Evolution: Earning Yield on Gold</h2>
+      <p>For centuries, gold's inertness was both its strength and its limitation. You couldn't earn a return on gold without lending it out, introducing counterparty risks that defeated the purpose of holding it in the first place.</p>
+      <p>Tokenization changes this calculus.</p>
+      <p>Because PAXG can interact with modern financial infrastructure, it can now participate in yield-generating strategies while the underlying physical gold remains in secure custody in LBMA vaults. No gold lending to bullion banks. No conversion to synthetic instruments. No compromising the core value proposition.</p>
+      <p><strong>We offer 7-10% historical annualized yield on PAXG holdings, paid in additional PAXG.</strong></p>
       
       <ul class="yield-list">
-        <li><strong>Additive by design:</strong> Strategies are structured to generate yield on top of gold exposure, not in place of it.</li>
-        <li><strong>Risk-managed:</strong> Multiple diversification layers and active monitoring are employed.</li>
-        <li><strong>Principal-focused:</strong> Strategies prioritize capital preservation over yield maximization.</li>
-        <li><strong>Long-term oriented:</strong> Designed for investors with appropriate time horizons.</li>
+        <li><strong>Paid in PAXG:</strong> Yield is distributed as additional PAXG tokens. Put in PAXG, receive more PAXG.</li>
+        <li><strong>Additive:</strong> You still own gold-backed tokens. Yield is generated on top of your position, not instead of it.</li>
+        <li><strong>Conservative:</strong> Strategies prioritize capital preservation over maximum returns.</li>
+        <li><strong>Risk-managed:</strong> Multiple layers of diversification and monitoring protect principal.</li>
+        <li><strong>Long-term focused:</strong> This compounds the benefits of a strategic gold allocation over time.</li>
       </ul>
 
-      <p><em>Past performance is not indicative of future results. Yield is variable and depends on market conditions, strategy performance, and other factors. Principal loss is possible.</em></p>
-
-      <p>For qualified investors interested in historical performance data and strategy details, please request information through the form below.</p>
+      <p>For investors who already believe in gold, yield transforms a defensive asset into a productive one while maintaining the same trusted backing and regulatory oversight.</p>
     </div>
   </section>
 
   <!-- How the Yield Works -->
   <section id="how-yield-works">
     <div class="container">
-      <h2>How the Strategies Work</h2>
-      <p>Yield-generating strategies utilize tokenized gold's unique properties within institutional-grade infrastructure. Approaches may include liquidity provision, basis capture, and secured lending activities—all with capital preservation as a stated priority.</p>
-      
-      <h3>Important Considerations</h3>
-      <p>Yield is variable and not guaranteed. Strategies involve risks including but not limited to: smart contract risk, counterparty risk, market risk, and regulatory risk. Principal loss is possible. Past performance does not guarantee future results.</p>
-      
-      <h3>Who This May Be Appropriate For</h3>
-      <p>This product is designed for qualified institutional investors and accredited individuals who understand both the opportunity and the risks involved. It may be appropriate for investors with 12+ month time horizons who can conduct independent due diligence and accept the risks of digital asset infrastructure.</p>
-      
-      <h3>Who This Is NOT Designed For</h3>
-      <p>This is not designed for retail investors who do not meet qualification standards, short-term traders, those requiring guaranteed liquidity or principal protection, or investors uncomfortable with emerging financial infrastructure.</p>
-      <p>We strongly encourage prospective allocators to review all documentation, consult qualified legal and financial advisors, and ensure any allocation is appropriate for their specific circumstances.</p>
+      <h2>How the Yield Works</h2>
+      <p>Yield is generated through systematic strategies that utilize PAXG's unique properties within institutional-grade infrastructure. These include liquidity provision and other conservative strategies, all with capital preservation as the primary objective.</p>
+      <p>This product is designed for sophisticated, long-term allocators who understand both the opportunity and the risks involved. It is appropriate for investors with 12+ month time horizons who can conduct independent due diligence.</p>
+      <p>It is not designed for short-term traders, those requiring guaranteed liquidity, or investors uncomfortable with emerging financial infrastructure.</p>
+      <p>We encourage prospective allocators to ask questions, review documentation, and consult qualified advisors before making any decisions.</p>
     </div>
   </section>
 
@@ -666,99 +741,85 @@
       <h2>Frequently Asked Questions</h2>
       
       <div class="faq-item">
-        <button class="faq-question">How is the physical gold secured?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Gold is held in LBMA-accredited vaults operated by tier-1 custodians. Holdings are segregated (not pooled), allocated to our account, and insured. Independent auditors verify holdings on a regular basis, and proof-of-reserve reports are published for transparency.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">How is the physical gold secured?</button>
+        <div class="faq-answer" id="faq-answer-1" role="region">
+          <div class="faq-answer-inner">PAXG is backed by allocated London Good Delivery gold stored in LBMA-accredited vaults in London, including facilities operated by Brink's, HSBC, and ICBC Standard Bank. Each PAXG token represents ownership of a specific fine troy ounce of gold, and holders can view the serial number, value, and physical characteristics of their allocated gold at any time. KPMG provides independent examination of Paxos's PAXG Redemption Assets Report to verify full backing.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">Can I redeem my tokens for physical gold?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Yes. Token holders may redeem for physical delivery subject to minimum quantities (typically 400 oz bars) and standard delivery logistics. Smaller redemptions may be settled in gold-equivalent value.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">Can I redeem my tokens for physical gold?</button>
+        <div class="faq-answer" id="faq-answer-2" role="region">
+          <div class="faq-answer-inner">Yes. PAXG can be redeemed 1:1 for loco London gold. Institutional investors can redeem PAXG for LBMA-accredited Good Delivery gold bars, unallocated loco London gold, or for USD. Redemption is available directly through Paxos subject to their terms and minimum quantities.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">Is the yield guaranteed?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">No. Yield is variable and depends on market conditions, strategy performance, and other factors. There is no guarantee of any particular return, and investors may receive less than their original investment. Historical performance is not indicative of future results. We provide transparent reporting on actual results to qualified investors upon request.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">Is the yield guaranteed?</button>
+        <div class="faq-answer" id="faq-answer-3" role="region">
+          <div class="faq-answer-inner">No. Yield rates are variable based on market conditions and strategy performance. Historical performance of 7-10% APY is not a guarantee of future results. We provide transparent reporting on actual yields achieved and prioritize capital preservation over yield maximization. Yield is paid in additional PAXG tokens.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">What are the key risks?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Key risks include but are not limited to: smart contract and technology risk, counterparty and protocol risk, custody risk, regulatory and legal risk, market and liquidity risk, and the risk of principal loss. Yield is not guaranteed and may be zero or negative in certain periods. This product involves digital asset infrastructure that is still evolving. Investors should carefully review all risk disclosures and consult with qualified advisors before investing.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">What happens if a smart contract is exploited?</button>
+        <div class="faq-answer" id="faq-answer-4" role="region">
+          <div class="faq-answer-inner">We maintain multiple layers of protection including third-party audits, bug bounty programs, insurance coverage, and diversification across protocols. In the event of a security incident, our incident response plan prioritizes investor protection and transparent communication. Note that PAXG itself is issued by Paxos Trust Company, a regulated New York trust company, providing additional institutional safeguards.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">What happens if a smart contract is exploited?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">We maintain multiple layers of protection including third-party audits, bug bounty programs, insurance coverage, and diversification across protocols. In the event of a security incident, our incident response plan prioritizes investor protection and transparent communication.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">How is this different from gold ETFs?</button>
+        <div class="faq-answer" id="faq-answer-5" role="region">
+          <div class="faq-answer-inner">Gold ETFs provide price exposure but typically offer no yield and charge annual custody fees (often 0.25-0.40%). PAXG provides exposure to allocated physical gold with zero custody fees, plus the ability to generate yield. Additional benefits include 24/7 liquidity, real-time verification of holdings, direct redemption rights for physical gold, and the ability to view the specific gold bars backing your tokens.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">How is this different from gold ETFs?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">ETFs provide price exposure to gold but typically offer no yield. Our product provides exposure to physical gold plus yield generation, with the added benefits of tokenized ownership: 24/7 liquidity, real-time verification, and global transferability.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">What is the minimum investment?</button>
+        <div class="faq-answer" id="faq-answer-6" role="region">
+          <div class="faq-answer-inner">Please contact us for current minimums. PAXG itself trades with a minimum size of 0.01 troy ounces. We work with qualified investors and can accommodate various entry points depending on circumstances. Schedule a private briefing to discuss your specific situation.</div>
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question">What is the minimum investment?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Please contact us for current minimums. We work with qualified investors and can accommodate various entry points depending on circumstances. Schedule a private briefing to discuss your specific situation.</div>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question">How do I verify the gold backing?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">We publish regular audit reports from independent third parties. Additionally, on-chain proof of reserves allows real-time verification of token supply against custodied gold. These reports are available upon request and to all token holders.</div>
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">How do I verify the gold backing?</button>
+        <div class="faq-answer" id="faq-answer-7" role="region">
+          <div class="faq-answer-inner">PAXG backing is verified through multiple channels. KPMG LLP provides independent accountants' examination of Paxos's PAXG Redemption Assets Report, confirming that redemption assets equal or exceed tokens outstanding. Additionally, PAXG holders can view their allocated gold bar serial numbers and characteristics directly through Paxos. On-chain verification of total token supply is available through any Ethereum block explorer.</div>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Calendly Embed Section -->
+  <!-- Schedule a Call Section -->
   <section class="calendly-section" id="book-call">
     <div class="container">
-      <h2>Request Information</h2>
-      <p>Schedule a consultation with our team to learn more. We'll answer your questions, discuss your specific situation, and provide detailed documentation to qualified investors—with no obligation.</p>
-      <p><em>This consultation is for informational purposes only and does not constitute investment advice or an offer of securities.</em></p>
-      
-      <!-- 
-        ============================================
-        CALENDLY EMBED
-        ============================================
-      -->
-      <div class="calendly-inline-widget" data-url="https://calendly.com/alec-psalion" style="min-width:320px;height:700px;"></div>
-      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-      
+      <h2>Schedule a Private Briefing</h2>
+      <p>A confidential conversation with our institutional team. We'll answer your questions, discuss your specific situation, and provide detailed documentation, with no obligation.</p>
+      <div style="margin-top: 32px;">
+        <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Schedule a Call</a>
+      </div>
     </div>
   </section>
 
   <!-- CTA Section -->
   <section class="cta-section" id="contact">
     <div class="container">
-      <h2>Learn More About Our Approach</h2>
-      <p>We understand that sophisticated allocators conduct thorough due diligence. We're prepared to provide qualified investors with detailed documentation, historical performance information, and direct access to our team.</p>
-      <p><em>This website is for informational purposes only. Nothing herein constitutes an offer to sell or solicitation of an offer to buy any security.</em></p>
+      <h2>Continue Your Research</h2>
+      <p>We understand that sophisticated allocators conduct thorough due diligence. We welcome your questions and are prepared to provide the documentation, references, and access you need to evaluate whether this solution fits your needs.</p>
+      <p><em>There's no pressure and no obligation, only a genuine interest in helping you understand whether this solution fits your allocation strategy.</em></p>
       
       <div class="cta-grid">
         <div class="cta-card">
-          <h3>Request Information</h3>
-          <p>Schedule a consultation with our team for qualified investors.</p>
-          <a href="#book-call" class="cta-btn cta-primary">Schedule a Call</a>
+          <h3>Book a Private Briefing</h3>
+          <p>Schedule a confidential conversation with our institutional team.</p>
+          <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Book a Call</a>
         </div>
         <div class="cta-card">
           <h3>Email Us Directly</h3>
           <p>Prefer email? We typically respond within one business day.</p>
-          <a href="mailto:alec@psalion.com" class="cta-btn cta-secondary">Email Us</a>
+          <a href="mailto:info@example.com" class="cta-btn cta-secondary">Email Us</a>
         </div>
       </div>
     </div>
@@ -766,26 +827,46 @@
 
   <!-- Footer -->
   <footer>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <p><strong>Important Disclosures</strong></p>
-      <p>This website is for informational purposes only and is intended for institutional investors, accredited investors, and qualified purchasers as defined under applicable securities laws. Nothing contained herein constitutes an offer to sell, a solicitation of an offer to buy, or a recommendation of any security or any other product or service.</p>
-      <p>Any investment involves substantial risks, including the possible loss of principal. Past performance is not indicative of future results. Yield is variable, not guaranteed, and may be zero or negative in certain periods.</p>
-      <p>Digital assets and tokenized products involve unique risks including technology risk, smart contract risk, regulatory risk, and custody risk. Prospective investors should consult their own legal, tax, and financial advisors before making any investment decision.</p>
-      <p>&copy; 2026 Psalion. All rights reserved.</p>
-    </div>
+    <p>For qualified, sophisticated investors only. This is not an offer to sell or solicitation to buy securities.</p>
+    <p>Past performance is not indicative of future results. Yield is variable and not guaranteed.</p>
+    <p>&copy; 2025 TokenizedGold. All rights reserved.</p>
   </footer>
 
   <!-- FAQ Accordion Script -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     document.addEventListener('DOMContentLoaded', function() {
       const faqQuestions = document.querySelectorAll('.faq-question');
       
       faqQuestions.forEach(function(question) {
         question.addEventListener('click', function() {
           const answer = this.nextElementSibling;
-          const isActive = this.classList.contains('active');
+          const isActive = this.getAttribute('aria-expanded') === 'true';
           
           // Close all other answers
           faqQuestions.forEach(function(q) {
             q.classList.remove('active');
-            q.nextElementSibl
+            q.setAttribute('aria-expanded', 'false');
+            q.nextElementSibling.style.maxHeight = null;
+          });
+          
+          // Toggle current answer
+          if (!isActive) {
+            this.classList.add('active');
+            this.setAttribute('aria-expanded', 'true');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+
+        // Keyboard accessibility
+        question.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.click();
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
