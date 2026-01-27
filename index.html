@@ -1,872 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tokenized Gold | Yield-Bearing Gold for Institutional Allocators</title>
-  <style>
-    :root {
-      --gold: #b8860b;
-      --gold-light: #d4a84b;
-      --gold-subtle: #f5f0e6;
-      --navy: #1a2a3a;
-      --navy-light: #2d4a6f;
-      --text: #2c3e50;
-      --text-light: #5a6a7a;
-      --bg: #ffffff;
-      --bg-alt: #f8f9fa;
-      --border: #e0e4e8;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--text);
-      background: var(--bg);
-    }
-
-    h1, h2, h3, h4, nav, .cta-btn {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      padding: 0 24px;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 72px;
-    }
-
-    .nav-logo {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--navy);
-      text-decoration: none;
-      letter-spacing: -0.5px;
-    }
-
-    .nav-logo span {
-      color: var(--gold);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-light);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--gold);
-    }
-
-    .nav-cta {
-      background: var(--navy);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-
-    .nav-cta:hover {
-      background: var(--navy-light);
-      color: white;
-    }
-
-    /* Hero Section */
-    .hero {
-      padding: 100px 24px 120px;
-      background: linear-gradient(180deg, var(--gold-subtle) 0%, var(--bg) 100%);
-    }
-
-    .hero-container {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      line-height: 1.2;
-      color: var(--navy);
-      margin-bottom: 24px;
-      font-weight: 700;
-      letter-spacing: -1px;
-    }
-
-    .hero-subheadline {
-      font-size: 22px;
-      color: var(--text-light);
-      margin-bottom: 32px;
-      font-style: italic;
-    }
-
-    .hero-text {
-      font-size: 19px;
-      color: var(--text);
-      margin-bottom: 48px;
-      max-width: 680px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      padding: 16px 32px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 600;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
-    }
-
-    .cta-primary {
-      background: var(--gold);
-      color: white;
-    }
-
-    .cta-primary:hover {
-      background: var(--gold-light);
-    }
-
-    .cta-secondary {
-      background: transparent;
-      color: var(--navy);
-      border: 2px solid var(--navy);
-    }
-
-    .cta-secondary:hover {
-      background: var(--navy);
-      color: white;
-    }
-
-    /* Sections */
-    section {
-      padding: 80px 24px;
-    }
-
-    section:nth-child(even) {
-      background: var(--bg-alt);
-    }
-
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      font-size: 32px;
-      color: var(--navy);
-      margin-bottom: 32px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    h3 {
-      font-size: 20px;
-      color: var(--navy);
-      margin-bottom: 16px;
-      margin-top: 32px;
-      font-weight: 600;
-    }
-
-    p {
-      margin-bottom: 20px;
-      color: var(--text);
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    strong {
-      color: var(--navy);
-      font-weight: 600;
-    }
-
-    /* Feature List */
-    .feature-list {
-      list-style: none;
-      margin: 24px 0;
-    }
-
-    .feature-list li {
-      padding: 12px 0 12px 32px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .feature-list li:last-child {
-      border-bottom: none;
-    }
-
-    .feature-list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 18px;
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-
-    /* Trust Callout Box */
-    .trust-callout {
-      background: var(--bg-alt);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--gold);
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin: 32px 0;
-    }
-
-    .trust-callout h4 {
-      font-size: 16px;
-      color: var(--navy);
-      margin-bottom: 16px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .trust-callout ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
-    .trust-callout li {
-      padding: 6px 0 6px 20px;
-      position: relative;
-      font-size: 16px;
-      color: var(--text);
-    }
-
-    .trust-callout li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-weight: bold;
-    }
-
-    /* Yield Highlight */
-    .yield-highlight {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-      color: white;
-      border-radius: 8px;
-      padding: 28px 32px;
-      margin: 32px 0;
-      text-align: center;
-    }
-
-    .yield-highlight .yield-number {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    }
-
-    .yield-highlight .yield-label {
-      font-size: 16px;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 0;
-    }
-
-    /* Comparison Table */
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 32px 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 16px;
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: 16px 20px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .comparison-table th {
-      background: var(--navy);
-      color: white;
-      font-weight: 600;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .comparison-table th:first-child {
-      border-radius: 4px 0 0 0;
-    }
-
-    .comparison-table th:last-child {
-      border-radius: 0 4px 0 0;
-    }
-
-    .comparison-table tr:nth-child(even) {
-      background: var(--bg-alt);
-    }
-
-    .comparison-table td:last-child {
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    /* Yield List */
-    .yield-list {
-      list-style: none;
-      margin: 24px 0;
-      background: var(--gold-subtle);
-      border-radius: 8px;
-      padding: 24px 32px;
-      border-left: 4px solid var(--gold);
-    }
-
-    .yield-list li {
-      padding: 8px 0;
-      display: flex;
-      gap: 12px;
-    }
-
-    .yield-list li strong {
-      min-width: 140px;
-      color: var(--navy);
-    }
-
-    /* FAQ Accordion */
-    .faq-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 24px 40px 24px 0;
-      text-align: left;
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--navy);
-      cursor: pointer;
-      position: relative;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      transition: color 0.2s;
-    }
-
-    .faq-question:hover {
-      color: var(--gold);
-    }
-
-    .faq-question::after {
-      content: '+';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 24px;
-      font-weight: 300;
-      color: var(--gold);
-      transition: transform 0.2s;
-    }
-
-    .faq-question.active::after {
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .faq-question[aria-expanded="true"]::after {
-      transform: translateY(-50%) rotate(45deg);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-
-    .faq-answer-inner {
-      padding: 0 0 24px 0;
-      color: var(--text-light);
-    }
-
-    /* Calendly Section */
-    .calendly-section {
-      background: var(--gold-subtle);
-      color: var(--text);
-      text-align: center;
-      border-top: 4px solid var(--gold);
-    }
-
-    .calendly-section h2 {
-      color: var(--navy);
-    }
-
-    .calendly-section p {
-      color: var(--text);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 18px;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      text-align: center;
-    }
-
-    .cta-section .container {
-      max-width: 640px;
-    }
-
-    .cta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .cta-card {
-      background: white;
-      padding: 32px 24px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      transition: box-shadow 0.2s;
-    }
-
-    .cta-card:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    .cta-card h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .cta-card p {
-      font-size: 15px;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-
-    .cta-card .cta-btn {
-      width: 100%;
-      padding: 14px 24px;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--navy);
-      color: rgba(255,255,255,0.6);
-      padding: 48px 24px;
-      text-align: center;
-      font-family: sans-serif;
-      font-size: 14px;
-    }
-
-    footer p {
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 8px;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero {
-        padding: 60px 24px 80px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      section {
-        padding: 60px 24px;
-      }
-
-      h2 {
-        font-size: 26px;
-      }
-
-      .comparison-table {
-        font-size: 14px;
-      }
-
-      .comparison-table th,
-      .comparison-table td {
-        padding: 12px;
-      }
-
-      .yield-list li {
-        flex-direction: column;
-        gap: 4px;
-      }
-
-      .yield-list li strong {
-        min-width: auto;
-      }
-
-      .yield-highlight .yield-number {
-        font-size: 32px;
-      }
-
-      .trust-callout {
-        padding: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psalion Gold | Your Gold Should Be Working For You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-light: #D4AF37;
+            --gold-main: #B8860B;
+            --gold-dark: #8B6914;
+            --black-deep: #0A0A0A;
+            --black-soft: #141414;
+            --black-muted: #1E1E1E;
+            --cream: #F5F0E6;
+            --text-primary: #FEFEFE;
+            --text-secondary: rgba(254, 254, 254, 0.65);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--font-body); background: var(--black-deep); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); opacity: 0.03; pointer-events: none; z-index: 1000; }
+        
+        /* Sticky CTA Bar */
+        .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(12px); padding: 1rem 2rem; display: flex; justify-content: center; align-items: center; gap: 2rem; z-index: 99; transform: translateY(100%); transition: transform 0.4s ease; border-top: 1px solid rgba(212, 175, 55, 0.2); }
+        .sticky-cta.visible { transform: translateY(0); }
+        .sticky-cta-text { font-size: 0.95rem; color: var(--text-secondary); }
+        .sticky-cta-text strong { color: var(--text-primary); }
+        
+        /* Navigation - Simplified */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 4rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(10,10,10,0.8) 80%, transparent 100%); backdrop-filter: blur(8px); animation: fadeDown 1s ease-out 0.2s both; }
+        @keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; letter-spacing: 0.12em; color: var(--gold-light); text-transform: uppercase; }
+        .logo span { color: var(--text-primary); font-weight: 400; }
+        .nav-trust { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: var(--text-secondary); }
+        .nav-trust-item svg { width: 16px; height: 16px; stroke: var(--gold-light); stroke-width: 2; fill: none; }
+        .nav-cta { padding: 0.7rem 1.5rem; background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-dark) 100%); border: none; color: var(--black-deep); font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; text-decoration: none; }
+        .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184, 134, 11, 0.4); }
+
+        /* Hero Section - Rewritten for Emotion */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 7rem 2rem 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(184, 134, 11, 0.1) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(184, 134, 11, 0.06) 0%, transparent 50%); pointer-events: none; }
+        
+        .hero-pre { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; animation: fadeUp 1s ease-out 0.3s both; font-weight: 400; }
+        .hero h1 { font-family: var(--font-display); font-size: clamp(2.75rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.08; letter-spacing: -0.02em; max-width: 850px; margin-bottom: 1.75rem; animation: fadeUp 1s ease-out 0.5s both; }
+        .hero h1 em { font-style: italic; color: var(--gold-light); font-weight: 300; }
+        .hero h1 .highlight { position: relative; }
+        .hero h1 .highlight::after { content: ''; position: absolute; bottom: 0.1em; left: 0; right: 0; height: 0.12em; background: var(--gold-main); opacity: 0.4; }
+        
+        .hero-sub { font-size: 1.2rem; color: var(--text-secondary); max-width: 580px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.7; animation: fadeUp 1s ease-out 0.7s both; }
+        .hero-sub strong { color: var(--text-primary); font-weight: 500; }
+        
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .hero-cta-wrap { animation: fadeUp 1s ease-out 0.9s both; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+        .btn-primary { padding: 1.1rem 2.75rem; background: linear-gradient(135deg, var(--gold-main) 0%, var(--gold-dark) 100%); border: none; color: var(--black-deep); font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; text-decoration: none; display: inline-block; }
+        .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: left 0.5s ease; }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(184, 134, 11, 0.5); }
+        .hero-cta-sub { font-size: 0.8rem; color: var(--text-secondary); }
+        .hero-cta-sub svg { width: 14px; height: 14px; stroke: var(--gold-light); stroke-width: 2; fill: none; vertical-align: middle; margin-right: 0.35rem; }
+        
+        /* Social Proof Bar - Early */
+        .social-proof { padding: 3rem 4rem; background: var(--black-soft); border-top: 1px solid rgba(212, 175, 55, 0.1); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .social-proof-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; }
+        .proof-item { display: flex; align-items: center; gap: 1rem; }
+        .proof-icon { width: 44px; height: 44px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .proof-icon svg { width: 22px; height: 22px; stroke: var(--gold-light); stroke-width: 1.75; fill: none; }
+        .proof-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
+        .proof-text strong { display: block; color: var(--text-primary); font-size: 1rem; font-weight: 500; }
+
+        /* Pain Point Section */
+        .pain-section { padding: 6rem 4rem; max-width: 900px; margin: 0 auto; text-align: center; }
+        .pain-section h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 300; line-height: 1.3; color: var(--cream); margin-bottom: 2rem; }
+        .pain-section h2 em { font-style: italic; color: var(--gold-light); }
+        .pain-list { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto 2.5rem; text-align: left; }
+        .pain-item { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.6; }
+        .pain-item::before { content: ''; width: 8px; height: 8px; background: rgba(212, 175, 55, 0.4); border-radius: 50%; margin-top: 0.55rem; flex-shrink: 0; }
+        .pain-resolution { font-size: 1.15rem; color: var(--text-primary); font-weight: 400; max-width: 650px; margin: 0 auto; line-height: 1.7; }
+        .pain-resolution strong { color: var(--gold-light); }
+
+        /* How It Works - Clearer Value Props */
+        .how-section { padding: 6rem 4rem; background: linear-gradient(180deg, var(--black-soft) 0%, var(--black-deep) 100%); }
+        .how-inner { max-width: 1100px; margin: 0 auto; }
+        .how-header { text-align: center; margin-bottom: 4rem; }
+        .how-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; margin-bottom: 1rem; }
+        .how-header h2 em { font-style: italic; color: var(--gold-light); }
+        .how-header p { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        
+        .how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+        .how-card { background: linear-gradient(145deg, var(--black-muted) 0%, var(--black-soft) 100%); border: 1px solid rgba(212, 175, 55, 0.08); padding: 2.25rem; position: relative; transition: all 0.4s ease; }
+        .how-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--gold-main), transparent); transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease; }
+        .how-card:hover::before { transform: scaleX(1); }
+        .how-card:hover { border-color: rgba(212, 175, 55, 0.2); }
+        .how-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .how-card-icon { width: 40px; height: 40px; background: rgba(212, 175, 55, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .how-card-icon svg { width: 20px; height: 20px; stroke: var(--gold-light); stroke-width: 2; fill: none; }
+        .how-card h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; color: var(--text-primary); }
+        .how-card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+        .how-card-benefit { font-size: 0.85rem; color: var(--gold-light); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; }
+        .how-card-benefit svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+        /* PAXG Trust Section */
+        .trust-section { padding: 6rem 4rem; }
+        .trust-inner { max-width: 1150px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+        .trust-content h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 300; line-height: 1.2; margin-bottom: 1.25rem; }
+        .trust-content h2 em { font-style: italic; color: var(--gold-light); }
+        .trust-content > p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 2rem; }
+        
+        .trust-features { display: flex; flex-direction: column; gap: 1rem; }
+        .trust-feature { display: flex; align-items: flex-start; gap: 0.85rem; }
+        .trust-feature-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; }
+        .trust-feature-icon svg { width: 100%; height: 100%; stroke: var(--gold-light); stroke-width: 2; fill: none; }
+        .trust-feature span { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.5; }
+        .trust-feature strong { color: var(--text-primary); font-weight: 500; }
+        
+        .trust-card { background: linear-gradient(145deg, var(--black-muted) 0%, rgba(20, 20, 20, 0.8) 100%); border: 1px solid rgba(212, 175, 55, 0.15); padding: 2.5rem; position: relative; overflow: hidden; }
+        .trust-card::before { content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%; background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%); pointer-events: none; }
+        .trust-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem; position: relative; z-index: 1; }
+        .trust-card-logo { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--gold-light); letter-spacing: 0.05em; }
+        .trust-card-badge { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black-deep); padding: 0.3rem 0.6rem; background: var(--gold-main); font-weight: 600; }
+        .trust-card-stat { position: relative; z-index: 1; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(254, 254, 254, 0.05); }
+        .trust-card-stat-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.35rem; }
+        .trust-card-stat-value { font-family: var(--font-display); font-size: 2.25rem; color: var(--text-primary); font-weight: 400; }
+        .trust-card-stat-value span { font-size: 1rem; color: var(--text-secondary); font-family: var(--font-body); margin-left: 0.25rem; }
+        .trust-card-details { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+        .trust-card-detail { }
+        .trust-card-detail-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+        .trust-card-detail-value { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
+        .trust-card-audit { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid rgba(212, 175, 55, 0.15); display: flex; align-items: center; gap: 1rem; position: relative; z-index: 1; }
+        .trust-card-audit-icon { width: 36px; height: 36px; background: rgba(212, 175, 55, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .trust-card-audit-icon svg { width: 18px; height: 18px; stroke: var(--gold-light); stroke-width: 2; fill: none; }
+        .trust-card-audit-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+        .trust-card-audit-text strong { display: block; color: var(--text-primary); font-weight: 500; font-size: 0.85rem; }
+
+        /* Who This Is For */
+        .for-section { padding: 5rem 4rem; background: var(--black-soft); }
+        .for-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+        .for-inner h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 300; margin-bottom: 2.5rem; }
+        .for-inner h2 em { font-style: italic; color: var(--gold-light); }
+        .for-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: left; }
+        .for-item { padding: 1.5rem; background: rgba(254, 254, 254, 0.02); border: 1px solid rgba(254, 254, 254, 0.05); }
+        .for-item h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .for-item p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Testimonial */
+        .testimonial { padding: 5rem 4rem; position: relative; }
+        .testimonial-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .testimonial-quote { font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 1.75rem); font-weight: 300; font-style: italic; line-height: 1.55; color: var(--cream); margin-bottom: 1.75rem; position: relative; }
+        .testimonial-quote::before { content: '"'; position: absolute; top: -0.5rem; left: -1.5rem; font-size: 4rem; color: rgba(212, 175, 55, 0.2); font-style: normal; line-height: 1; }
+        .testimonial-author { font-size: 0.9rem; color: var(--text-secondary); }
+        .testimonial-author strong { display: block; color: var(--text-primary); font-weight: 500; font-size: 1rem; margin-bottom: 0.15rem; }
+        .testimonial-author span { color: var(--gold-light); }
+
+        /* Process - Specific */
+        .process { padding: 6rem 4rem; background: linear-gradient(180deg, var(--black-deep) 0%, var(--black-soft) 100%); }
+        .process-inner { max-width: 1000px; margin: 0 auto; }
+        .process-header { text-align: center; margin-bottom: 4rem; }
+        .process-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 300; margin-bottom: 0.75rem; }
+        .process-header h2 em { font-style: italic; color: var(--gold-light); }
+        .process-header p { font-size: 1rem; color: var(--text-secondary); }
+        .process-steps { display: flex; flex-direction: column; gap: 0; }
+        .process-step { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid rgba(254, 254, 254, 0.05); position: relative; }
+        .process-step:last-child { border-bottom: none; }
+        .process-step-num { font-family: var(--font-display); font-size: 3.5rem; font-weight: 300; color: rgba(212, 175, 55, 0.2); line-height: 1; }
+        .process-step-content h4 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .process-step-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
+        .process-step-detail { font-size: 0.8rem; color: var(--gold-light); display: flex; align-items: center; gap: 0.4rem; }
+        .process-step-detail svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; }
+
+        /* FAQ */
+        .faq { padding: 5rem 4rem; }
+        .faq-inner { max-width: 750px; margin: 0 auto; }
+        .faq-header { text-align: center; margin-bottom: 3rem; }
+        .faq-header h2 { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 300; }
+        .faq-header h2 em { font-style: italic; color: var(--gold-light); }
+        .faq-item { border-bottom: 1px solid rgba(254, 254, 254, 0.08); }
+        .faq-question { padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-question h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--text-primary); }
+        .faq-question svg { width: 20px; height: 20px; stroke: var(--gold-light); stroke-width: 2; fill: none; transition: transform 0.3s ease; }
+        .faq-item.open .faq-question svg { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.5rem; }
+        .faq-answer p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* Final CTA */
+        .final-cta { padding: 8rem 4rem; text-align: center; position: relative; background: radial-gradient(ellipse 100% 80% at 50% 100%, rgba(184, 134, 11, 0.12) 0%, transparent 60%); }
+        .final-cta-inner { max-width: 700px; margin: 0 auto; }
+        .final-cta h2 { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.25rem; }
+        .final-cta h2 em { font-style: italic; color: var(--gold-light); }
+        .final-cta > p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7; }
+        .final-cta-box { background: rgba(254, 254, 254, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); padding: 2.5rem; margin-bottom: 1.5rem; }
+        .final-cta-box h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .final-cta-box p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .final-cta-note { font-size: 0.85rem; color: var(--text-secondary); }
+        .final-cta-note svg { width: 16px; height: 16px; stroke: var(--gold-light); stroke-width: 2; fill: none; vertical-align: middle; margin-right: 0.4rem; }
+
+        /* Footer */
+        footer { padding: 3rem 4rem; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+        .footer-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-logo { font-family: var(--font-display); font-size: 1.15rem; font-weight: 300; letter-spacing: 0.12em; color: var(--gold-light); text-transform: uppercase; }
+        .footer-legal { font-size: 0.75rem; color: var(--text-secondary); opacity: 0.6; }
+        .footer-disclaimer { max-width: 1100px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(254, 254, 254, 0.05); font-size: 0.7rem; color: var(--text-secondary); opacity: 0.45; line-height: 1.55; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav { padding: 1rem 2rem; }
+            .nav-trust { display: none; }
+            .how-grid { grid-template-columns: 1fr; }
+            .trust-inner { grid-template-columns: 1fr; gap: 3rem; }
+            .for-grid { grid-template-columns: 1fr; }
+            .social-proof-inner { gap: 2.5rem; }
+        }
+        @media (max-width: 640px) {
+            .pain-section, .how-section, .trust-section, .for-section, .testimonial, .process, .faq, .final-cta { padding: 4rem 1.5rem; }
+            .social-proof { padding: 2rem 1.5rem; }
+            .social-proof-inner { flex-direction: column; gap: 1.5rem; }
+            .process-step { grid-template-columns: 50px 1fr; gap: 1rem; }
+            .process-step-num { font-size: 2.5rem; }
+            .footer-content { flex-direction: column; gap: 1rem; text-align: center; }
+            .sticky-cta { flex-direction: column; gap: 1rem; padding: 1rem; }
+            .sticky-cta-text { text-align: center; font-size: 0.85rem; }
+            .trust-card-details { grid-template-columns: 1fr; }
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(35px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+    </style>
 </head>
 <body>
-
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="#" class="nav-logo">Tokenized<span>Gold</span></a>
-      <ul class="nav-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#tokenized-gold">Tokenized Gold</a></li>
-        <li><a href="#yield">Yield</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="nav-cta">Book a Call</a>
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <span class="sticky-cta-text"><strong>Ready to put your gold to work?</strong> Schedule an intro call.</span>
+        <a href="https://calendly.com/alec-psalion" target="_blank" class="btn-primary" style="padding: 0.75rem 1.75rem; font-size: 0.8rem;">Book Your Call</a>
     </div>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="overview">
-    <div class="hero-container">
-      <h1>Gold Has Protected Wealth for 5,000 Years. Now It Can Grow It.</h1>
-      <p class="hero-subheadline">A modern approach to gold ownership, with the yield institutional allocators have been waiting for.</p>
-      
-      <div class="yield-highlight">
-        <div class="yield-number">7-10% Historical APY</div>
-        <p class="yield-label">Earn yield in PAXG: put in PAXG, receive additional PAXG</p>
-      </div>
-
-      <p class="hero-text">For centuries, gold has served as humanity's most trusted store of value. But traditional gold ownership comes with trade-offs: storage costs, settlement friction, and zero yield. We utilize PAXG, a fully-backed, regulated tokenized gold issued by Paxos Trust Company, to change this equation. For the first time, sophisticated investors can hold fully-backed physical gold with unprecedented transparency and liquidity while generating yield paid in additional PAXG.</p>
-      <div class="hero-ctas">
-        <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Book a Private Briefing</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Investors Own Gold -->
-  <section id="why-gold">
-    <div class="container">
-      <h2>Why Investors Own Gold</h2>
-      <p>Gold remains a cornerstone of sophisticated portfolios for well-established reasons. It has historically preserved purchasing power during periods of currency debasement and inflation. Its low correlation with equities and bonds provides genuine diversification when it matters most. And it serves as portfolio insurance against tail risks: geopolitical instability, banking crises, and systemic shocks.</p>
-      <p>Today, interest in gold is rising again. Central banks have become net buyers at multi-decade highs. Sovereign debt levels continue to climb. And allocators increasingly seek hard assets as a hedge against an uncertain monetary environment.</p>
-      <p><strong>The case for gold is clear. The question is how to own it most effectively.</strong></p>
-    </div>
-  </section>
-
-  <!-- Limitations of Traditional Gold -->
-  <section id="limitations">
-    <div class="container">
-      <h2>The Limitations of Traditional Gold</h2>
-      <p>Gold's value proposition is compelling. But the infrastructure through which it has historically been accessed creates meaningful friction.</p>
-      <ul class="feature-list">
-        <li><strong>No yield.</strong> Unlike bonds, equities, or real estate, traditional gold generates no income. It sits inert, providing protection but no return on capital, a significant opportunity cost for allocators managing to benchmarks.</li>
-        <li><strong>Custody drag.</strong> Storage, insurance, and administration typically cost 0.25-0.50% annually. These costs compound over time and never stop.</li>
-        <li><strong>Settlement friction.</strong> Traditional gold markets operate on T+2 or longer settlement. Large transactions require coordination between custodians and counterparties, limiting portfolio flexibility.</li>
-      </ul>
-      <p>These limitations don't diminish gold's value. They highlight the opportunity for infrastructure improvement.</p>
-    </div>
-  </section>
-
-  <!-- What Is Tokenized Gold -->
-  <section id="tokenized-gold">
-    <div class="container">
-      <h2>What Is Tokenized Gold?</h2>
-      <p>Tokenized gold is physical gold represented as digital tokens on secure blockchain infrastructure. We utilize <strong>PAXG (Pax Gold)</strong>, issued by Paxos Trust Company, LLC, a New York limited purpose trust company regulated by the New York State Department of Financial Services. Each PAXG token corresponds to exactly one fine troy ounce of allocated London Good Delivery gold held in LBMA-accredited vaults in London.</p>
-      
-      <div class="trust-callout">
-        <h4>PAXG Trust &amp; Backing</h4>
-        <ul>
-          <li>Issued by Paxos Trust Company, LLC, regulated by NYDFS</li>
-          <li>1 PAXG = 1 fine troy ounce of allocated London Good Delivery gold</li>
-          <li>Gold stored in LBMA-accredited vaults in London</li>
-          <li>Redeemable 1:1 for loco London gold or physical delivery</li>
-          <li>Zero custody fees for PAXG token holders</li>
-          <li>KPMG provides independent examination of PAXG redemption assets</li>
-        </ul>
-      </div>
-
-      <h3>How It Works</h3>
-      <p>PAXG can be purchased with USD or unallocated gold, which is then converted into allocated gold bars through an LBMA clearer. Tokens are minted in relation to those specific bars. At any time, PAXG holders can see the serial number, value, and physical characteristics of their vaulted gold. Independent auditors verify that total PAXG tokens outstanding match the underlying gold assets.</p>
-
-      <h3>Independent Verification</h3>
-      <p>KPMG LLP conducts independent accountants' examinations of Paxos's PAXG Redemption Assets Report. Their examination verifies that total redemption assets (London Good Delivery gold held in LBMA-approved vaults) are equal to or greater than the total PAXG redeemable tokens outstanding. This provides institutional-grade assurance of full backing.</p>
-      
-      <h3>Why Institutions Are Adopting It</h3>
-      <p>Regulatory clarity has emerged in major jurisdictions. Paxos Trust Company is regulated by the New York State Department of Financial Services and operates under established trust company standards. The operational benefits (reduced costs, improved liquidity, real-time verification) align with how modern portfolios are managed.</p>
-    </div>
-  </section>
-
-  <!-- Why Tokenized Gold Is Better -->
-  <section id="comparison">
-    <div class="container">
-      <h2>Why PAXG Is a Better Way to Own Gold</h2>
-      <p>PAXG doesn't change what gold is. It changes how gold can be owned, managed, and utilized, with full regulatory oversight and independent verification.</p>
-      <ul class="feature-list">
-        <li><strong>Liquidity.</strong> Trade 24/7 with near-instant settlement, rather than waiting days to liquidate positions.</li>
-        <li><strong>Transparency.</strong> Verify holdings on-chain in real time. PAXG holders can view the serial numbers and characteristics of their allocated gold bars at any time.</li>
-        <li><strong>Efficiency.</strong> Zero custody fees for PAXG. Eliminate storage and administrative costs while maintaining full ownership of allocated gold.</li>
-        <li><strong>Flexibility.</strong> Integrate gold seamlessly with modern portfolio infrastructure and reporting systems.</li>
-      </ul>
-
-      <table class="comparison-table">
-        <thead>
-          <tr>
-            <th>Attribute</th>
-            <th>Traditional Gold</th>
-            <th>PAXG</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Liquidity</td>
-            <td>Days to settle</td>
-            <td>24/7, near-instant</td>
-          </tr>
-          <tr>
-            <td>Verification</td>
-            <td>Manual audits</td>
-            <td>Real-time, on-chain + KPMG examination</td>
-          </tr>
-          <tr>
-            <td>Settlement</td>
-            <td>T+2 or longer</td>
-            <td>Minutes</td>
-          </tr>
-          <tr>
-            <td>Custody Fees</td>
-            <td>0.25-0.50% annually</td>
-            <td>Zero</td>
-          </tr>
-          <tr>
-            <td>Yield Potential</td>
-            <td>None</td>
-            <td>7-10% historical APY</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p><strong>The upgrade is operational, not speculative. Same gold. Better infrastructure. Independent verification.</strong></p>
-    </div>
-  </section>
-
-  <!-- Earning Yield on Gold -->
-  <section id="yield">
-    <div class="container">
-      <h2>The Evolution: Earning Yield on Gold</h2>
-      <p>For centuries, gold's inertness was both its strength and its limitation. You couldn't earn a return on gold without lending it out, introducing counterparty risks that defeated the purpose of holding it in the first place.</p>
-      <p>Tokenization changes this calculus.</p>
-      <p>Because PAXG can interact with modern financial infrastructure, it can now participate in yield-generating strategies while the underlying physical gold remains in secure custody in LBMA vaults. No gold lending to bullion banks. No conversion to synthetic instruments. No compromising the core value proposition.</p>
-      <p><strong>We offer 7-10% historical annualized yield on PAXG holdings, paid in additional PAXG.</strong></p>
-      
-      <ul class="yield-list">
-        <li><strong>Paid in PAXG:</strong> Yield is distributed as additional PAXG tokens. Put in PAXG, receive more PAXG.</li>
-        <li><strong>Additive:</strong> You still own gold-backed tokens. Yield is generated on top of your position, not instead of it.</li>
-        <li><strong>Conservative:</strong> Strategies prioritize capital preservation over maximum returns.</li>
-        <li><strong>Risk-managed:</strong> Multiple layers of diversification and monitoring protect principal.</li>
-        <li><strong>Long-term focused:</strong> This compounds the benefits of a strategic gold allocation over time.</li>
-      </ul>
-
-      <p>For investors who already believe in gold, yield transforms a defensive asset into a productive one while maintaining the same trusted backing and regulatory oversight.</p>
-    </div>
-  </section>
-
-  <!-- How the Yield Works -->
-  <section id="how-yield-works">
-    <div class="container">
-      <h2>How the Yield Works</h2>
-      <p>Yield is generated through systematic strategies that utilize PAXG's unique properties within institutional-grade infrastructure. These include liquidity provision and other conservative strategies, all with capital preservation as the primary objective.</p>
-      <p>This product is designed for sophisticated, long-term allocators who understand both the opportunity and the risks involved. It is appropriate for investors with 12+ month time horizons who can conduct independent due diligence.</p>
-      <p>It is not designed for short-term traders, those requiring guaranteed liquidity, or investors uncomfortable with emerging financial infrastructure.</p>
-      <p>We encourage prospective allocators to ask questions, review documentation, and consult qualified advisors before making any decisions.</p>
-    </div>
-  </section>
-
-  <!-- FAQ Section -->
-  <section id="faq">
-    <div class="container">
-      <h2>Frequently Asked Questions</h2>
-      
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">How is the physical gold secured?</button>
-        <div class="faq-answer" id="faq-answer-1" role="region">
-          <div class="faq-answer-inner">PAXG is backed by allocated London Good Delivery gold stored in LBMA-accredited vaults in London, including facilities operated by Brink's, HSBC, and ICBC Standard Bank. Each PAXG token represents ownership of a specific fine troy ounce of gold, and holders can view the serial number, value, and physical characteristics of their allocated gold at any time. KPMG provides independent examination of Paxos's PAXG Redemption Assets Report to verify full backing.</div>
+    <nav>
+        <div class="logo">Psalion <span>Gold</span></div>
+        <div class="nav-trust">
+            <div class="nav-trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                KPMG Audited
+            </div>
+            <div class="nav-trust-item">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                NYDFS Regulated
+            </div>
         </div>
-      </div>
+        <a href="https://calendly.com/alec-psalion" target="_blank" class="nav-cta">Schedule Call</a>
+    </nav>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">Can I redeem my tokens for physical gold?</button>
-        <div class="faq-answer" id="faq-answer-2" role="region">
-          <div class="faq-answer-inner">Yes. PAXG can be redeemed 1:1 for loco London gold. Institutional investors can redeem PAXG for LBMA-accredited Good Delivery gold bars, unallocated loco London gold, or for USD. Redemption is available directly through Paxos subject to their terms and minimum quantities.</div>
+    <section class="hero">
+        <p class="hero-pre">For gold investors who want more from their allocation</p>
+        <h1>Your Gold Is <span class="highlight">Sitting There</span>.<br>It Should Be <em>Working</em>.</h1>
+        <p class="hero-sub">You own gold for a reason. But right now it's costing you money—ETF fees, storage costs, opportunity cost—and earning you nothing. <strong>We change that.</strong> Earn yield denominated in gold, paid in gold, without changing your thesis.</p>
+        <div class="hero-cta-wrap">
+            <a href="https://calendly.com/alec-psalion" target="_blank" class="btn-primary">Schedule Your Intro Call</a>
+            <span class="hero-cta-sub"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> No commitment. No pitch deck. Just a conversation.</span>
         </div>
-      </div>
+    </section>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">Is the yield guaranteed?</button>
-        <div class="faq-answer" id="faq-answer-3" role="region">
-          <div class="faq-answer-inner">No. Yield rates are variable based on market conditions and strategy performance. Historical performance of 7-10% APY is not a guarantee of future results. We provide transparent reporting on actual yields achieved and prioritize capital preservation over yield maximization. Yield is paid in additional PAXG tokens.</div>
+    <section class="social-proof">
+        <div class="social-proof-inner">
+            <div class="proof-item reveal">
+                <div class="proof-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+                <div class="proof-text"><strong>Live Since 2024</strong>Running with client capital</div>
+            </div>
+            <div class="proof-item reveal reveal-delay-1">
+                <div class="proof-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <div class="proof-text"><strong>Monthly KPMG Attestation</strong>Gold reserves independently verified</div>
+            </div>
+            <div class="proof-item reveal reveal-delay-2">
+                <div class="proof-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path></svg></div>
+                <div class="proof-text"><strong>Fully Liquid</strong>No lock-ups, withdraw anytime</div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">What happens if a smart contract is exploited?</button>
-        <div class="faq-answer" id="faq-answer-4" role="region">
-          <div class="faq-answer-inner">We maintain multiple layers of protection including third-party audits, bug bounty programs, insurance coverage, and diversification across protocols. In the event of a security incident, our incident response plan prioritizes investor protection and transparent communication. Note that PAXG itself is issued by Paxos Trust Company, a regulated New York trust company, providing additional institutional safeguards.</div>
+    <section class="pain-section">
+        <h2 class="reveal">If any of this sounds familiar, <em>keep reading.</em></h2>
+        <div class="pain-list reveal reveal-delay-1">
+            <div class="pain-item">You believe in gold long-term, but watching it sit there earning nothing feels... wasteful.</div>
+            <div class="pain-item">You're paying storage fees, ETF expense ratios, or opportunity costs on an inert asset.</div>
+            <div class="pain-item">You've looked at "gold yield" options before but they felt sketchy, complicated, or required you to give up real ownership.</div>
         </div>
-      </div>
+        <p class="pain-resolution reveal reveal-delay-2">You shouldn't have to choose between <strong>holding gold</strong> and <strong>earning yield</strong>. With Psalion Gold, you don't.</p>
+    </section>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-5">How is this different from gold ETFs?</button>
-        <div class="faq-answer" id="faq-answer-5" role="region">
-          <div class="faq-answer-inner">Gold ETFs provide price exposure but typically offer no yield and charge annual custody fees (often 0.25-0.40%). PAXG provides exposure to allocated physical gold with zero custody fees, plus the ability to generate yield. Additional benefits include 24/7 liquidity, real-time verification of holdings, direct redemption rights for physical gold, and the ability to view the specific gold bars backing your tokens.</div>
+    <section class="how-section">
+        <div class="how-inner">
+            <div class="how-header">
+                <h2 class="reveal">How It <em>Actually</em> Works</h2>
+                <p class="reveal reveal-delay-1">Your account is measured in ounces of gold—not dollars. You accumulate more gold over time, regardless of what the dollar price does.</p>
+            </div>
+            <div class="how-grid">
+                <div class="how-card reveal">
+                    <div class="how-card-header">
+                        <div class="how-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>
+                        <h3>Denominated in Gold</h3>
+                    </div>
+                    <p>Your position is measured in troy ounces. Returns accrue as additional gold. If you start with 100 oz, you'll see that number grow—pure gold-on-gold returns.</p>
+                    <div class="how-card-benefit"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> No USD conversion risk in your gold thesis</div>
+                </div>
+                <div class="how-card reveal reveal-delay-1">
+                    <div class="how-card-header">
+                        <div class="how-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path></svg></div>
+                        <h3>Daily Accrual</h3>
+                    </div>
+                    <p>Yield accrues to your account every single day. No quarterly distributions to wait for. Watch your gold balance grow steadily.</p>
+                    <div class="how-card-benefit"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Compounding works in your favor</div>
+                </div>
+                <div class="how-card reveal reveal-delay-2">
+                    <div class="how-card-header">
+                        <div class="how-card-icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"></path></svg></div>
+                        <h3>Fully Liquid</h3>
+                    </div>
+                    <p>No lock-ups. No gates. No penalty for early withdrawal. Your capital, your timeline. Request redemption and receive funds promptly.</p>
+                    <div class="how-card-benefit"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Access your capital when you need it</div>
+                </div>
+                <div class="how-card reveal reveal-delay-3">
+                    <div class="how-card-header">
+                        <div class="how-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"></path></svg></div>
+                        <h3>Flexible Funding</h3>
+                    </div>
+                    <p>Fund with PAXG directly, or with USD or other digital assets. We convert to PAXG at cost—no markups, no spread.</p>
+                    <div class="how-card-benefit"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Start with what you have</div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-6">What is the minimum investment?</button>
-        <div class="faq-answer" id="faq-answer-6" role="region">
-          <div class="faq-answer-inner">Please contact us for current minimums. PAXG itself trades with a minimum size of 0.01 troy ounces. We work with qualified investors and can accommodate various entry points depending on circumstances. Schedule a private briefing to discuss your specific situation.</div>
+    <section class="trust-section">
+        <div class="trust-inner">
+            <div class="trust-content">
+                <h2 class="reveal">Built on <em>Real Gold</em>, Not Promises</h2>
+                <p class="reveal reveal-delay-1">Our strategy uses PAX Gold (PAXG)—a token issued by Paxos Trust Company, regulated by the New York State Department of Financial Services. Each PAXG represents direct ownership of one fine troy ounce of LBMA-accredited gold, stored in the same London vaults that hold gold for central banks and sovereign wealth funds.</p>
+                <div class="trust-features reveal reveal-delay-2">
+                    <div class="trust-feature">
+                        <div class="trust-feature-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span><strong>1:1 Gold Backing</strong> — Each token equals one fine troy ounce of London Good Delivery gold. Not a derivative. Not a claim. Actual gold.</span>
+                    </div>
+                    <div class="trust-feature">
+                        <div class="trust-feature-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span><strong>Allocated, Not Pooled</strong> — You own specific, serialized gold bars. View your bar numbers anytime.</span>
+                    </div>
+                    <div class="trust-feature">
+                        <div class="trust-feature-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span><strong>LBMA London Vaults</strong> — Stored with Brink's, HSBC, and ICBC Standard Bank. The gold standard for gold storage.</span>
+                    </div>
+                    <div class="trust-feature">
+                        <div class="trust-feature-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                        <span><strong>Redeemable for Physical</strong> — Convert to physical bars, unallocated gold, or USD. Your choice, anytime.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="trust-card reveal">
+                <div class="trust-card-header">
+                    <div class="trust-card-logo">PAXG</div>
+                    <div class="trust-card-badge">NYDFS Regulated</div>
+                </div>
+                <div class="trust-card-stat">
+                    <div class="trust-card-stat-label">Gold Backing Ratio</div>
+                    <div class="trust-card-stat-value">1:1 <span>Token to Troy Oz</span></div>
+                </div>
+                <div class="trust-card-details">
+                    <div class="trust-card-detail">
+                        <div class="trust-card-detail-label">Gold Standard</div>
+                        <div class="trust-card-detail-value">LBMA Good Delivery</div>
+                    </div>
+                    <div class="trust-card-detail">
+                        <div class="trust-card-detail-label">Vault Location</div>
+                        <div class="trust-card-detail-value">London, UK</div>
+                    </div>
+                    <div class="trust-card-detail">
+                        <div class="trust-card-detail-label">Custody Fee</div>
+                        <div class="trust-card-detail-value">Zero</div>
+                    </div>
+                    <div class="trust-card-detail">
+                        <div class="trust-card-detail-label">Settlement</div>
+                        <div class="trust-card-detail-value">Instant (T+0)</div>
+                    </div>
+                </div>
+                <div class="trust-card-audit">
+                    <div class="trust-card-audit-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                    <div class="trust-card-audit-text">
+                        <strong>Monthly KPMG Attestation</strong>
+                        Token supply verified against physical gold reserves every month
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-7">How do I verify the gold backing?</button>
-        <div class="faq-answer" id="faq-answer-7" role="region">
-          <div class="faq-answer-inner">PAXG backing is verified through multiple channels. KPMG LLP provides independent accountants' examination of Paxos's PAXG Redemption Assets Report, confirming that redemption assets equal or exceed tokens outstanding. Additionally, PAXG holders can view their allocated gold bar serial numbers and characteristics directly through Paxos. On-chain verification of total token supply is available through any Ethereum block explorer.</div>
+    <section class="for-section">
+        <div class="for-inner">
+            <h2 class="reveal">This Is Built For <em>You</em> If...</h2>
+            <div class="for-grid">
+                <div class="for-item reveal">
+                    <h4>Long-term Gold Believers</h4>
+                    <p>You already own gold or plan to. You see it as insurance, a hedge, or a core allocation. You're not looking to trade it—but earning yield on it? That's interesting.</p>
+                </div>
+                <div class="for-item reveal reveal-delay-1">
+                    <h4>Family Offices & HNW Investors</h4>
+                    <p>You have meaningful gold exposure and want it working harder. You value liquidity, transparency, and institutional-grade custody.</p>
+                </div>
+                <div class="for-item reveal reveal-delay-2">
+                    <h4>Skeptics of "Crypto Yield"</h4>
+                    <p>You've seen the blowups—Celsius, BlockFi, the rest. You want yield, but not at the cost of sleeping well. PAXG is backed by real gold, audited monthly by KPMG, and regulated in New York.</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    
 
-  <!-- Schedule a Call Section -->
-  <section class="calendly-section" id="book-call">
-    <div class="container">
-      <h2>Schedule a Private Briefing</h2>
-      <p>A confidential conversation with our institutional team. We'll answer your questions, discuss your specific situation, and provide detailed documentation, with no obligation.</p>
-      <div style="margin-top: 32px;">
-        <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Schedule a Call</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section" id="contact">
-    <div class="container">
-      <h2>Continue Your Research</h2>
-      <p>We understand that sophisticated allocators conduct thorough due diligence. We welcome your questions and are prepared to provide the documentation, references, and access you need to evaluate whether this solution fits your needs.</p>
-      <p><em>There's no pressure and no obligation, only a genuine interest in helping you understand whether this solution fits your allocation strategy.</em></p>
-      
-      <div class="cta-grid">
-        <div class="cta-card">
-          <h3>Book a Private Briefing</h3>
-          <p>Schedule a confidential conversation with our institutional team.</p>
-          <a href="https://calendly.com/alec-psalion" target="_blank" rel="noopener noreferrer" class="cta-btn cta-primary">Book a Call</a>
+    <section class="process">
+        <div class="process-inner">
+            <div class="process-header">
+                <h2 class="reveal">Getting Started Is <em>Simple</em></h2>
+                <p class="reveal reveal-delay-1">Most clients are fully set up within 5 business days.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step reveal">
+                    <div class="process-step-num">01</div>
+                    <div class="process-step-content">
+                        <h4>Intro Call</h4>
+                        <p>We learn about your goals, walk through exactly how the strategy generates yield, and answer every question. No pressure, no pitch deck theatrics. Just you, Alec, and a straightforward conversation.</p>
+                        <span class="process-step-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Schedule at your convenience via Calendly</span>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-delay-1">
+                    <div class="process-step-num">02</div>
+                    <div class="process-step-content">
+                        <h4>Review Documentation</h4>
+                        <p>We send you everything: track record, risk framework, fee structure, and custody details. Take your time. Ask follow-up questions.</p>
+                        <span class="process-step-detail"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg> Full transparency before you commit</span>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-delay-2">
+                    <div class="process-step-num">03</div>
+                    <div class="process-step-content">
+                        <h4>Fund Your Account</h4>
+                        <p>Send PAXG directly, or fund with USD or other digital assets. We convert to PAXG at cost. Yield begins accruing immediately.</p>
+                        <span class="process-step-detail"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> Flexible funding options</span>
+                    </div>
+                </div>
+                <div class="process-step reveal reveal-delay-3">
+                    <div class="process-step-num">04</div>
+                    <div class="process-step-content">
+                        <h4>Watch Your Gold Grow</h4>
+                        <p>Monthly statements, real-time position access, and a direct line to our team. You'll always know exactly where you stand.</p>
+                        <span class="process-step-detail"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Ongoing reporting & support</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="cta-card">
-          <h3>Email Us Directly</h3>
-          <p>Prefer email? We typically respond within one business day.</p>
-          <a href="mailto:info@example.com" class="cta-btn cta-secondary">Email Us</a>
+    </section>
+
+    <section class="faq">
+        <div class="faq-inner">
+            <div class="faq-header">
+                <h2 class="reveal">Common <em>Questions</em></h2>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h4>What's the minimum investment?</h4>
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="faq-answer">
+                    <p>We work primarily with qualified investors starting at $100,000. For larger allocations ($500K+), we can discuss customized arrangements. Schedule a call and we'll find the right fit.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal reveal-delay-1">
+                <div class="faq-question">
+                    <h4>How is yield generated?</h4>
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="faq-answer">
+                    <p>We deploy PAXG into carefully vetted yield-generating activities. We're selective about counterparties and strategies. On our call, we'll walk you through the specifics and answer any questions about our risk management approach.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal reveal-delay-2">
+                <div class="faq-question">
+                    <h4>What if I want to withdraw?</h4>
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="faq-answer">
+                    <p>No lock-ups, no gates, no penalties. Submit a redemption request and receive your PAXG (or USD equivalent) promptly. It's your capital—we don't hold it hostage.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal reveal-delay-3">
+                <div class="faq-question">
+                    <h4>Is PAXG really backed by physical gold?</h4>
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes. Each PAXG token represents one fine troy ounce of LBMA-accredited gold stored in London vaults. Paxos publishes monthly attestation reports audited by KPMG confirming token supply matches physical reserves. You can even look up your specific bar serial numbers.</p>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <h4>What are the fees?</h4>
+                    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="faq-answer">
+                    <p>We charge a management fee and a performance fee on yield generated. No hidden costs, no conversion markups. We'll walk through the complete fee structure on our call—everything is disclosed upfront before you commit a single dollar.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>For qualified, sophisticated investors only. This is not an offer to sell or solicitation to buy securities.</p>
-    <p>Past performance is not indicative of future results. Yield is variable and not guaranteed.</p>
-    <p>&copy; 2025 TokenizedGold. All rights reserved.</p>
-  </footer>
+    <section class="final-cta">
+        <div class="final-cta-inner">
+            <h2 class="reveal">Ready to Put Your<br><em>Gold to Work?</em></h2>
+            <p class="reveal reveal-delay-1">Let's have a conversation. No commitment, no hard sell. Just a straightforward discussion about whether this makes sense for your situation.</p>
+            <div class="final-cta-box reveal reveal-delay-2">
+                <h3>Schedule Your Intro Call</h3>
+                <p>Pick a time that works for you. We'll answer your questions and share everything you need to make an informed decision.</p>
+                <a href="https://calendly.com/alec-psalion" target="_blank" class="btn-primary">View Available Times</a>
+            </div>
+            <p class="final-cta-note reveal reveal-delay-3"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> Your information is kept confidential. We don't share or sell data.</p>
+        </div>
+    </section>
 
-  <!-- FAQ Accordion Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const faqQuestions = document.querySelectorAll('.faq-question');
-      
-      faqQuestions.forEach(function(question) {
-        question.addEventListener('click', function() {
-          const answer = this.nextElementSibling;
-          const isActive = this.getAttribute('aria-expanded') === 'true';
-          
-          // Close all other answers
-          faqQuestions.forEach(function(q) {
-            q.classList.remove('active');
-            q.setAttribute('aria-expanded', 'false');
-            q.nextElementSibling.style.maxHeight = null;
-          });
-          
-          // Toggle current answer
-          if (!isActive) {
-            this.classList.add('active');
-            this.setAttribute('aria-expanded', 'true');
-            answer.style.maxHeight = answer.scrollHeight + 'px';
-          }
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Psalion Gold</div>
+            <div class="footer-legal">© 2025 Psalion Capital. All rights reserved.</div>
+        </div>
+        <div class="footer-disclaimer">
+            This material is for informational purposes only and does not constitute an offer or solicitation to purchase any security or investment product. Past performance is not indicative of future results. Investments involve risk, including the possible loss of principal. Digital assets are subject to price volatility and regulatory uncertainty. Yield will vary based on market conditions. Please review all offering documents carefully before investing. Available to qualified investors only.
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Sticky CTA visibility
+        const stickyCta = document.getElementById('stickyCta');
+        const heroSection = document.querySelector('.hero');
+        const stickyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    stickyCta.classList.add('visible');
+                } else {
+                    stickyCta.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0 });
+        stickyObserver.observe(heroSection);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
         });
 
-        // Keyboard accessibility
-        question.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.click();
-          }
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         });
-      });
-    });
-  </script>
-
+    </script>
 </body>
 </html>
